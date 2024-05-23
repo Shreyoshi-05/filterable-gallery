@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filterable gallery</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100%;
+            background-color: rgb(158, 90, 112);
+        }
+        #container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .btn{
+            width: 90px;
+            height: 30px;
+            margin: 15px;
+            border-radius: 5px;
+            border: 3px solid  rgb(216, 209, 244);
+            color: rgb(126, 75, 91);
+            font-weight: bold;
+            background-color:  rgb(216, 209, 244);
+
+        }
+        h2{
+            font-size: 40px;
+            color: rgb(249, 246, 247);
+        }
+        .btn:hover{
+            background-color: pink;
+            color: rgb(203, 45, 45);
+            border: 3px solid pink;
+            cursor: pointer;
+        }
+        .store_itm img{
+            height: 40vh;
+            margin: 10px;
+            box-shadow: 2px 2px 7px rgb(38, 33, 33);
+        }
+        #store_items{
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: 120px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div id="container">
+
+        <h2>Filtereble gallery</h2>
+
+        <div id="manu">
+            <button class="btn" data-filter="all">all</button>
+            <button class="btn" data-filter="anjel">anjel</button>
+            <button class="btn" data-filter="mapa">mapa</button>
+            <button class="btn" data-filter="star">star</button>
+        </div>
+
+        <div id="store_items">
+            <div class="store_itm anjel">
+                <img src="anjel1.jpg" class="image_store" alt="">
+            </div>
+
+            <div class="store_itm mapa">
+                <img src="mapa1.jpg" class="image_store" alt="">
+            </div>
+
+            <div class="store_itm star">
+                <img src="star1.jpg" class="image_store" alt="">
+            </div>
+
+            <div class="store_itm anjel">
+                <img src="anjel2.jpg" class="image_store" alt="">
+            </div>
+
+            <div class="store_itm mapa">
+                <img src="mapa2.jpg" class="image_store" alt="">
+            </div>
+
+            <div class="store_itm star">
+                <img src="star2.jpg" class="image_store" alt="">
+            </div>
+
+            <div class="store_itm anjel">
+                <img src="anjel3.jpg" class="image_store" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        (function(){
+
+        const btn = document.querySelectorAll(".btn")
+        const container = document.querySelector("#store_items")
+        const photo = document.querySelectorAll(".store_itm")
+
+
+        btn.forEach((button)=>{
+            button.addEventListener("click",(e)=>{
+                e.preventDefault();
+                const filter = button.dataset.filter
+
+                photo.forEach((img)=>{
+                    if(filter=="all"){
+                        img.style.display = "block"
+                    }else{
+                        if(img.classList.contains(filter)){
+                            img.style.display = "block"
+                        }else{
+                            img.style.display = "none"
+                        }
+                    }
+                })
+
+
+            })
+        })
+
+
+        }())
+
+
+    </script>
+
+
+</body>
+</html>
